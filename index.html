@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirvana Studio</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            fill: #333;
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        main {
+            padding-top: 80px;
+        }
+
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: #fff;
+            color: #333;
+            padding: 0.8rem 1rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-icons {
+                display: none;
+            }
+
+            .nav-icons.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+  
+
+        .featured-categories {
+            display: flex;
+            justify-content: space-around;
+            padding: 4rem 5%;
+        }
+
+        .category {
+            text-align: center;
+        }
+
+        .category img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .new-arrivals {
+            background-color: #fff;
+            padding: 4rem 5%;
+        }
+
+        .new-arrivals h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        .hero {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh; /* Make the hero section cover the full height of the viewport */
+    
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the section without stretching */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the video in the section */
+    z-index: -1; /* Places the video behind the text content */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; /* Keeps the text content above the video */
+    text-align: center; /* Center the text for a better mobile experience */
+    padding: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh; /* Adjusts the height for smaller screens */
+    }
+    
+    .hero-content {
+        font-size: 90%; /* Reduce font size for smaller screens */
+    }
+
+    .cta-button {
+        font-size: 14px; /* Adjust button size for mobile */
+        padding: 8px 16px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">NIRVANA</a>
+            <div class="nav-icons" id="navIcons">
+                <a href="#" aria-label="Search">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Shopping Cart">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                    </svg>
+                </a>
+            </div>
+            <button class="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <video class="hero-video" autoplay muted loop>
+                <source src="Images/Untitled design (1).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-content">
+                <h1>Redefine Your Style</h1>
+                <p>Discover our curated collection of timeless elegance</p>
+                <a href="#" class="cta-button">Explore Now</a>
+            </div>
+        </section>
+    </main>
+        <section class="featured-categories">
+            <div class="category">
+                <img src="Images/Saree.png" alt="Dresses">
+                <h3>Sarees</h3>
+                <a href="#">View Collection</a>
+            </div>
+            <div class="category">
+                <img src="Images/Lehanga.png" alt="Accessories">
+                <h3>Lehanga</h3>
+                <a href="#">View Collection</a>
+            </div>
+            <div class="category">
+                <img src="Images/Kurta.png" alt="Shoes">
+                <h3>Kurtas</h3>
+                <a href="#">View Collection</a>
+            </div>
+        </section>
+
+        <section class="new-arrivals">
+            <h2>New Arrivals</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="Images/Cover.png" alt="Product 1">
+                    <div class="product-info">
+                        <h3>Elegant Sarees</h3>
+                        <p>1889.99</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="Images/Lehanga.png" alt="Product 2">
+                    <div class="product-info">
+                        <h3>Classic Lehangas</h3>
+                        <p>1129.99</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="Images/Tops.png" alt="Product 3">
+                    <div class="product-info">
+                        <h3>Stylish Tops</h3>
+                        <p>1959.99</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="Images/Design.png" alt="Product 4">
+                    <div class="product-info">
+                        <h3>Comfortable Designs</h3>
+                        <p>999.99</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nirvana Studio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
